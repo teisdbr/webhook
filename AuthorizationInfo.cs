@@ -9,6 +9,10 @@ namespace WebhookProcessor
             AuthType = authType;
         }
 
+        public AuthorizationInfo()
+        {
+        }
+
         public AuthorizationType AuthType { get; set; }
 
        public string UserName { get; set; }
