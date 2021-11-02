@@ -41,7 +41,6 @@ namespace WebhookProcessor
         /// Make a HTTP Post Request without any authentication headers
         /// </summary>
         /// <typeparam name="TRequestBody"></typeparam>
-        /// <typeparam name="TAuthInfo"></typeparam>
         /// <typeparam name="TReturn"></typeparam>
         /// <param name="payload"></param>
         /// <param name="url"></param>
@@ -79,7 +78,7 @@ namespace WebhookProcessor
         /// <param name="url"></param>
         /// <param name="processResponseHandler">Delegate which accepts http response</param>
         /// <returns></returns>
-        public static async Task<TReturn> Get<TAuthInfo, TResponse,TReturn>(string queryString, string url, TAuthInfo info, Func<TResponse, Task<TReturn>> processResponseHandler, bool retry = false)
+        public static async Task<TReturn> Get<TAuthInfo, TResponse,TReturn>(string queryString, string url, TAuthInfo info, Func<TResponse, Task<TReturn>> processResponseHandler = null, bool retry = false)
         {
 
             Func<Task<TReturn>> function = async () =>
@@ -91,6 +90,7 @@ namespace WebhookProcessor
             return retry ? await Helpers.RetryOnFail(function) : await function();
           
         }
+        
         /// <summary>
         /// Make a Get Request with the no authentication headers.
         /// </summary>
@@ -100,7 +100,7 @@ namespace WebhookProcessor
         /// <param name="url"></param>
         /// <param name="processResponseHandler">Delegate which accepts http response</param>
         /// <returns></returns>
-        public static async Task<TReturn> Get<TResponse, TReturn>(string queryString, string url, Func<TResponse, Task<TReturn>> processResponseHandler, bool retry = false)
+        public static async Task<TReturn> Get<TResponse, TReturn>(string queryString, string url, Func<TResponse, Task<TReturn>> processResponseHandler = null, bool retry = false)
         {
             Func<Task<TReturn>> function = async () =>
             {
