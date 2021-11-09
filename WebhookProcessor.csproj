@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>0.0.0.1</AssemblyVersion>
     <FileVersion>0.0.0.1</FileVersion>
-    <Version>0.0.1</Version>
+    <Version>0.0.5</Version>
     <Company>TEI</Company>
     <Description>This Library has classes to encapsulate a HTTP request, make a request and return a reponse.</Description>
   </PropertyGroup>
